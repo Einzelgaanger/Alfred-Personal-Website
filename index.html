@@ -3,26 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mez Rodriguez | Computer Science & Data Science Portfolio</title>
+    <title>Alfred Mulinge Maweu | Statistics & Data Science Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #7c3aed;
-            --dark: #1e293b;
-            --dark-alt: #334155;
-            --light: #f8fafc;
-            --light-alt: #f1f5f9;
-            --accent: #f59e0b;
-            --success: #10b981;
-            --danger: #ef4444;
+            --primary: #1a73e8;
+            --primary-dark: #0d5bbc;
+            --secondary: #6c63ff;
+            --dark: #121212;
+            --dark-alt: #2d3748;
+            --light: #ffffff;
+            --light-alt: #f8f9fa;
+            --accent: #ffab00;
+            --success: #00c853;
+            --danger: #ff3d00;
             --border-radius: 12px;
             --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             --transition: all 0.3s ease;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         * {
@@ -298,7 +299,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom right, rgba(37, 99, 235, 0.3), rgba(124, 58, 237, 0.3));
+            background: linear-gradient(to bottom right, rgba(26, 115, 232, 0.3), rgba(108, 99, 255, 0.3));
             z-index: 1;
             border-radius: var(--border-radius);
         }
@@ -487,56 +488,59 @@
         }
 
         /* Contact Section */
-        .contact-container {
+        .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .contact-card {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
             background-color: white;
+            border-radius: var(--border-radius);
             padding: 1.5rem;
-            border-radius: var(--border-radius);
+            text-align: center;
             box-shadow: var(--shadow);
-        }
-
-        .contact-icon {
-            font-size: 1.5rem;
-            color: var(--primary);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 1rem;
-            border: 1px solid #ddd;
-            border-radius: var(--border-radius);
-            font-family: inherit;
             transition: var(--transition);
         }
 
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        .contact-card:hover {
+            transform: translateY(-5px);
         }
 
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
         }
+
+        .contact-link {
+            display: block;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+
+        /* Social Media Colors */
+        .phone { color: #25D366; }
+        .email { color: #EA4335; }
+        .whatsapp { color: #25D366; }
+        .instagram { color: #E4405F; }
+        .twitter { color: #1DA1F2; }
+        .linkedin { color: #0077B5; }
+        .facebook { color: #1877F2; }
+        .github { color: #181717; }
+        .telegram { color: #0088cc; }
+        .stack-overflow { color: #f48024; }
+        .codepen { color: #000000; }
+        .youtube { color: #ff0000; }
+        .twitch { color: #9146FF; }
+        .tiktok { color: #000000; }
+        .skype { color: #00AFF0; }
+        .discord { color: #5865F2; }
+        .reddit { color: #FF4500; }
+        .flickr { color: #0063dc; }
+        .pinterest { color: #E60023; }
 
         /* Footer */
         footer {
@@ -555,24 +559,27 @@
 
         .social-links {
             display: flex;
-            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            max-width: 600px;
         }
 
         .social-link {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: white;
             transition: var(--transition);
+            font-size: 1.25rem;
         }
 
         .social-link:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.1);
         }
 
         .copyright {
@@ -661,37 +668,6 @@
             margin-top: 1rem;
         }
 
-        /* Language Progress */
-        .language-progress {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .language-progress-bar {
-            margin-bottom: 1rem;
-        }
-
-        .language-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-        }
-
-        .progress {
-            height: 8px;
-            background-color: var(--light-alt);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            border-radius: 4px;
-            transition: width 1s ease;
-        }
-
         /* Responsive Styles */
         @media (max-width: 992px) {
             .hero-content {
@@ -764,6 +740,10 @@
             .hero-subtitle {
                 font-size: 1.1rem;
             }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 576px) {
@@ -778,6 +758,16 @@
 
             .project-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                gap: 0.75rem;
+            }
+
+            .social-link {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
             }
         }
 
@@ -795,6 +785,67 @@
         .delay-2 { animation-delay: 0.4s; }
         .delay-3 { animation-delay: 0.6s; }
         .delay-4 { animation-delay: 0.8s; }
+
+        /* Notification styles */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius);
+            color: white;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 3000;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .notification.success {
+            background-color: var(--success);
+        }
+        
+        .notification.error {
+            background-color: var(--danger);
+        }
+
+        /* Download Button */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary);
+            color: white;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .download-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Project Image Placeholder */
+        .project-image-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-alt);
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
@@ -802,13 +853,13 @@
     <header id="header">
         <div class="container">
             <nav>
-                <a href="#" class="logo">Mez<span>.</span></a>
+                <a href="#" class="logo">Einzel<span>.</span></a>
                 
                 <ul class="nav-links">
                     <li><a href="#home" class="active">Home</a></li>
                     <li><a href="#academic">Academic</a></li>
                     <li><a href="#projects">Projects</a></li>
-                    <li><a href="#resume">Resume</a></li>
+                    <li><a href="#resume">Experience</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 
@@ -824,24 +875,24 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text animate-fade">
-                    <h1 class="hero-title">Hi, I'm <span class="text-primary">Mez Rodriguez</span></h1>
-                    <h2 class="hero-subtitle">Computer Science & Data Science Student</h2>
+                    <h1 class="hero-title">Hi, I'm <span class="text-primary">Alfred Mulinge Maweu</span></h1>
+                    <h2 class="hero-subtitle">Statistics & Data Science Student at Strathmore University</h2>
                     
-                    <p>Passionate tech innovator and lifelong learner dedicated to pushing the boundaries of technology and making a meaningful impact through data-driven solutions.</p>
+                    <p>A passionate quantitative analyst with expertise in predictive modeling, financial analytics, and data-driven decision making. My interdisciplinary approach combines rigorous statistical methods with cutting-edge technology to solve complex real-world problems across industries.</p>
                     
                     <div class="mission-statement animate-fade delay-1">
                         <h3>Mission Statement</h3>
-                        <p>To leverage cutting-edge technologies in solving complex real-world problems, while continuously expanding my knowledge and contributing to innovative solutions that make a difference.</p>
+                        <p>To leverage artificial intelligence, advanced analytics, and mathematical modeling to drive innovation in financial services, political strategy, and SME development. Through my work, I aim to create scalable solutions that democratize access to data-driven insights while establishing an NGO to support underserved communities through technology education and economic empowerment.</p>
                     </div>
 
                     <div class="hero-btns animate-fade delay-2">
-                        <a href="#contact" class="btn">Get In Touch</a>
-                        <a href="#" class="btn btn-outline">View My Work</a>
+                        <a href="#contact" class="btn">Contact Me</a>
+                        <a href="#projects" class="btn btn-outline">View My Work</a>
                     </div>
                 </div>
                 
                 <div class="hero-image animate-fade delay-1">
-                    <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Mez Rodriguez Professional Photo">
+                    <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Alfred Mulinge Maweu Professional Photo">
                 </div>
             </div>
         </div>
@@ -855,31 +906,30 @@
             <div class="academic-grid">
                 <div class="course-card animate-fade">
                     <i class="fas fa-graduation-cap text-primary" style="font-size: 2rem; margin-bottom: 1rem;"></i>
-                    <h3>University of Technology</h3>
-                    <p class="text-accent">B.Sc. Computer Science & Data Science | 2021-2025</p>
-                    <p>Specializing in Machine Learning and Artificial Intelligence with a minor in Business Analytics.</p>
+                    <h3>Strathmore University</h3>
+                    <p class="text-accent">B.Sc. Statistics & Data Science | 2021-2025</p>
+                    <p>Specializing in predictive analytics and econometric modeling with coursework spanning machine learning, statistical computing, and business intelligence applications. Expected graduation: June 2028.</p>
                 </div>
                 
                 <div class="course-card animate-fade delay-1">
                     <i class="fas fa-book text-primary" style="font-size: 2rem; margin-bottom: 1rem;"></i>
-                    <h3>Coursework Highlights</h3>
+                    <h3>Research & Publications</h3>
                     <ul>
-                        <li>Advanced Machine Learning</li>
-                        <li>Quantum Computing Fundamentals</li>
-                        <li>Deep Neural Networks</li>
-                        <li>Blockchain Technologies</li>
-                        <li>Data Visualization</li>
+                        <li>Comprehensive analysis of Islamic banking customer acquisition strategies</li>
+                        <li>Agribusiness market research with private equity applications</li>
+                        <li>Longitudinal study of Kenyan food prices (2006-2024) and economic impact</li>
+                        <li>War impact analysis for UN humanitarian response planning</li>
                     </ul>
                 </div>
                 
                 <div class="course-card animate-fade delay-2">
                     <i class="fas fa-road text-primary" style="font-size: 2rem; margin-bottom: 1rem;"></i>
-                    <h3>Learning Roadmaps</h3>
+                    <h3>Professional Development</h3>
                     <ul>
-                        <li>Data Science Master Path</li>
-                        <li>Advanced Python Programming</li>
-                        <li>Full-Stack Web Development</li>
-                        <li>Cloud Computing Certification</li>
+                        <li>Full-stack web application development (Django, React, Node.js)</li>
+                        <li>Financial modeling and quantitative analysis certification</li>
+                        <li>Blockchain and cryptocurrency market analysis</li>
+                        <li>NGO management and impact measurement frameworks</li>
                     </ul>
                 </div>
             </div>
@@ -900,42 +950,45 @@
     <!-- Resume & Career Section -->
     <section id="resume" class="section bg-light-alt">
         <div class="container">
-            <h2 class="section-title">Career Journey</h2>
+            <h2 class="section-title">Professional Experience</h2>
             
             <div class="timeline">
                 <div class="timeline-item animate-fade">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">Summer 2023</span>
-                        <h3>AI Research Intern</h3>
-                        <h4>Tech Innovations Lab</h4>
-                        <p>Developed novel algorithms for natural language processing applications. Co-authored research paper published in IEEE Transactions on AI.</p>
+                        <span class="timeline-date">Jan 2025 - Present</span>
+                        <h3>Data Analyst</h3>
+                        <h4>USAID | ACDI/VOCA | RLA</h4>
+                        <p>Conducting comprehensive data analysis on the Russia-Ukraine conflict impacts, developing predictive models for humanitarian response planning, and creating frameworks for economic recovery prioritization. Reporting directly to UN stakeholders with actionable insights for crisis mitigation.</p>
                     </div>
                 </div>
                 
                 <div class="timeline-item animate-fade delay-1">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">2022 - Present</span>
-                        <h3>Freelance Developer</h3>
-                        <h4>Self-Employed</h4>
-                        <p>Providing machine learning consulting, web development, and data analysis services to startups and small businesses.</p>
+                        <span class="timeline-date">Feb - Mar 2025</span>
+                        <h3>Data Analysis Intern</h3>
+                        <h4>Enkaare</h4>
+                        <p>Developed talent matching algorithms and implemented data-driven recruitment strategies. Created a comprehensive marketing strategy through market research and competitive analysis, resulting in improved candidate placement rates.</p>
                     </div>
                 </div>
                 
                 <div class="timeline-item animate-fade delay-2">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">2021 - 2022</span>
-                        <h3>Teaching Assistant</h3>
-                        <h4>University of Technology</h4>
-                        <p>Assisted professors in Data Structures and Algorithms course, conducted lab sessions, and mentored students.</p>
+                        <span class="timeline-date">Jan - Mar 2025</span>
+                        <h3>Crypto Economics Consultant</h3>
+                        <h4>Black Panther TKN</h4>
+                        <p>Designed probabilistic models for tokenomics, including reward distribution algorithms and game theory applications. Developed mathematical frameworks to ensure sustainable token valuation and balanced incentive structures.</p>
                     </div>
                 </div>
             </div>
             
             <div class="text-center" style="margin-top: 3rem;">
-                <a href="#" class="btn">Download Full Resume</a>
+                <a href="#" class="download-btn">
+                    <i class="fas fa-download"></i>
+                    Download Full Resume
+                </a>
             </div>
         </div>
     </section>
@@ -943,140 +996,84 @@
     <!-- Skills Section -->
     <section class="section">
         <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
+            <h2 class="section-title">Technical Expertise</h2>
             
             <div class="skills-container">
                 <div class="skill-item animate-fade">
                     <div class="skill-icon">
-                        <i class="fab fa-python"></i>
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3>Python</h3>
-                    <p>Advanced proficiency with NumPy, Pandas, TensorFlow, and scikit-learn</p>
+                    <h3>Predictive Analytics</h3>
+                    <p>Advanced statistical modeling, time series forecasting, and machine learning applications for business intelligence</p>
                 </div>
                 
                 <div class="skill-item animate-fade delay-1">
                     <div class="skill-icon">
-                        <i class="fas fa-database"></i>
+                        <i class="fab fa-python"></i>
                     </div>
                     <h3>Data Science</h3>
-                    <p>Machine Learning, Data Analysis, Visualization, and Statistical Modeling</p>
+                    <p>Pandas, NumPy, SciPy, TensorFlow for data manipulation, analysis, and predictive modeling</p>
                 </div>
                 
                 <div class="skill-item animate-fade delay-2">
                     <div class="skill-icon">
-                        <i class="fab fa-js"></i>
+                        <i class="fas fa-code"></i>
                     </div>
-                    <h3>JavaScript</h3>
-                    <p>Full-stack development with React, Node.js, and Express</p>
+                    <h3>Web Development</h3>
+                    <p>Full-stack development with Django, React, Node.js, and modern JavaScript frameworks</p>
                 </div>
                 
                 <div class="skill-item animate-fade delay-3">
                     <div class="skill-icon">
-                        <i class="fas fa-cloud"></i>
+                        <i class="fas fa-coins"></i>
                     </div>
-                    <h3>Cloud Computing</h3>
-                    <p>AWS, Google Cloud, and Azure deployment experience</p>
+                    <h3>Financial Modeling</h3>
+                    <p>Quantitative analysis, risk assessment, and algorithmic trading strategy development</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section bg-dark">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-card animate-fade">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h3>Email</h3>
-                            <p>hello@mezrodriguez.com</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-card animate-fade delay-1">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div>
-                            <h3>Location</h3>
-                            <p>San Francisco, CA</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-card animate-fade delay-2">
-                        <div class="contact-icon">
-                            <i class="fas fa-calendar-alt"></i>
-                        </div>
-                        <div>
-                            <h3>Availability</h3>
-                            <p>Open for internships and freelance projects</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <form class="contact-form animate-fade delay-1">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Your Name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Your Email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Subject">
-                    </div>
-                    
-                    <div class="form-group">
-                        <textarea class="form-control" placeholder="Your Message" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-accent">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter Section -->
-    <section class="section">
-        <div class="container">
-            <div class="newsletter text-center animate-fade">
-                <h2>Stay Updated</h2>
-                <p>Subscribe to my newsletter to receive updates on my latest projects and articles.</p>
-                <div style="max-width: 500px; margin: 1rem auto; display: flex; gap: 0.5rem;">
-                    <input type="email" class="form-control" placeholder="Enter your email" style="flex: 1;">
-                    <button class="btn">Subscribe</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="social-links">
-                    <a href="https://linkedin.com/in/mez" class="social-link">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://github.com/mez" class="social-link">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://twitter.com/mez" class="social-link">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="https://medium.com/@mez" class="social-link">
-                        <i class="fab fa-medium-m"></i>
-                    </a>
-                </div>
+            <div class="social-links">
+                <!-- Professional Networks -->
+                <a href="https://linkedin.com/in/alfredmaweu" class="social-link linkedin" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/alfredmaweu" class="social-link github" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://stackoverflow.com/users/alfredmaweu" class="social-link stack-overflow" title="Stack Overflow">
+                    <i class="fab fa-stack-overflow"></i>
+                </a>
                 
-                <p class="copyright">© 2023 Mez Rodriguez. All Rights Reserved.</p>
+                <!-- Communication -->
+                <a href="mailto:hello@alfredmaweu.com" class="social-link email" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://wa.me/254712345678" class="social-link whatsapp" title="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://t.me/alfredmaweu" class="social-link telegram" title="Telegram">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                
+                <!-- Social Media -->
+                <a href="https://twitter.com/alfredmaweu" class="social-link twitter" title="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://instagram.com/alfredmaweu" class="social-link instagram" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                
+                <!-- Developer Profiles -->
+                <a href="https://codepen.io/alfredmaweu" class="social-link codepen" title="CodePen">
+                    <i class="fab fa-codepen"></i>
+                </a>
             </div>
+            
+            <p class="copyright">© 2025 Alfred Mulinge Maweu. All rights reserved.</p>
         </div>
     </footer>
 
@@ -1087,7 +1084,7 @@
     </div>
 
     <script>
-        // Mez's Portfolio - Interactive JavaScript Functionality
+        // Portfolio JavaScript Functionality
 
         document.addEventListener('DOMContentLoaded', () => {
             // Mobile Responsive Menu Toggle
@@ -1172,25 +1169,40 @@
             function initProjectInteractivity() {
                 const projects = [
                     {
-                        title: 'AI-Powered Sentiment Analyzer',
-                        description: 'Machine learning model detecting emotional sentiment in social media posts with 92% accuracy using transformer architecture. This project involved collecting and preprocessing large datasets, training multiple models, and deploying a web interface for real-time analysis.',
-                        technologies: ['Python', 'TensorFlow', 'NLP', 'Flask'],
-                        githubLink: 'https://github.com/mez/sentiment-analyzer',
+                        title: 'Kenyan Food Price Analysis',
+                        description: 'Comprehensive longitudinal study analyzing the impact of food price fluctuations on the Kenyan economy from June 2006 to June 2024. Developed econometric models to identify key drivers of price volatility and created policy recommendations for market stabilization. The project involved time series analysis, causal inference modeling, and scenario forecasting using ARIMA and VAR methodologies.',
+                        technologies: ['Python', 'Pandas', 'Statsmodels', 'ARIMA', 'Data Visualization'],
+                        downloadLink: '#',
+                        imageUrl: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
+                        title: 'TransparentTrack NGO System',
+                        description: 'End-to-end solution for transparent and accountable NGO fund disbursement. The system includes beneficiary registration, needs assessment algorithms, fund allocation optimization, and blockchain-based transaction tracking to prevent fraud. Implemented with Django backend, React frontend, and Hyperledger Fabric for distributed ledger functionality.',
+                        technologies: ['Django', 'React', 'Hyperledger', 'Blockchain', 'PostgreSQL'],
+                        githubLink: 'https://github.com/alfredmaweu/transparent-track',
+                        liveLink: 'https://transparenttrack.org',
+                        imageUrl: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
+                        title: 'BizLens SME Management Platform',
+                        description: 'Comprehensive business management solution for small and medium enterprises featuring inventory management, sales tracking, financial reporting, and predictive analytics. The mobile-first design includes computer vision capabilities for product recognition and barcode scanning. Built with React Native for cross-platform compatibility and Firebase for real-time data synchronization.',
+                        technologies: ['React Native', 'Firebase', 'Computer Vision', 'Python', 'Machine Learning'],
+                        githubLink: 'https://github.com/alfredmaweu/bizlens',
                         imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
                     },
                     {
-                        title: 'Decentralized Voting Platform',
-                        description: 'Blockchain-based secure voting system for university elections with transparent, tamper-proof results. Implemented smart contracts in Solidity, built a React frontend, and integrated with MetaMask for wallet connectivity.',
-                        technologies: ['Solidity', 'React', 'Web3.js', 'Ethereum'],
-                        githubLink: 'https://github.com/mez/voting-dapp',
-                        imageUrl: 'https://images.unsplash.com/photo-1620121692029-d088224ddc74?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
+                        title: 'Matungulu Bursary System',
+                        description: 'Digital platform for transparent bursary allocation and distribution in Matungulu constituency. The system incorporates need-based algorithms, document verification, and mobile payment integration. Reduced processing time by 70% while increasing accountability through real-time tracking and automated reporting features.',
+                        technologies: ['Django', 'M-Pesa API', 'React', 'PostgreSQL', 'Docker'],
+                        githubLink: 'https://github.com/alfredmaweu/matungulu-bursary',
+                        imageUrl: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
                     },
                     {
-                        title: 'Neural Network Library',
-                        description: 'Custom deep learning framework from scratch with support for CNNs, RNNs, and transformer architectures. Implemented automatic differentiation, optimization algorithms, and GPU acceleration using CUDA.',
-                        technologies: ['Python', 'NumPy', 'CUDA', 'Deep Learning'],
-                        githubLink: 'https://github.com/mez/nn-framework',
-                        imageUrl: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
+                        title: 'Orthopedic Practice Website',
+                        description: 'Professional website for an orthopedic surgery practice featuring appointment scheduling, telemedicine integration, and patient education resources. Implemented HIPAA-compliant forms and secure messaging with end-to-end encryption. The responsive design includes 3D anatomical visualizations and interactive treatment planners.',
+                        technologies: ['React', 'Three.js', 'Node.js', 'MongoDB', 'WebRTC'],
+                        liveLink: 'https://orthocareclinic.com',
+                        imageUrl: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
                     }
                 ];
 
@@ -1202,16 +1214,23 @@
                     if (index === 0) projectEl.classList.add('animate-fade');
                     if (index === 1) projectEl.classList.add('animate-fade', 'delay-1');
                     if (index === 2) projectEl.classList.add('animate-fade', 'delay-2');
+                    if (index === 3) projectEl.classList.add('animate-fade', 'delay-3');
+                    if (index === 4) projectEl.classList.add('animate-fade', 'delay-4');
+                    
+                    // Use placeholder if no image URL
+                    const imageContent = project.imageUrl 
+                        ? `<img src="${project.imageUrl}" alt="${project.title}">`
+                        : `<div class="project-image-placeholder">${project.title}</div>`;
                     
                     projectEl.innerHTML = `
-                        <img src="${project.imageUrl}" alt="${project.title}">
+                        ${imageContent}
                         <div class="project-content">
                             <h3>${project.title}</h3>
                             <div class="project-tags">
                                 ${project.technologies.map(tech => `<span class="project-tag">${tech}</span>`).join('')}
                             </div>
                             <p>${project.description.substring(0, 100)}...</p>
-                            <button class="btn btn-outline view-project" style="margin-top: 1rem;">View Project</button>
+                            <button class="btn btn-outline view-project" style="margin-top: 1rem;">View Details</button>
                         </div>
                     `;
                     
@@ -1227,16 +1246,35 @@
             function openProjectModal(project) {
                 const modal = document.createElement('div');
                 modal.classList.add('project-modal');
+                
+                // Build links section
+                let linksSection = '';
+                if (project.githubLink || project.liveLink || project.downloadLink) {
+                    linksSection = '<div class="project-links" style="margin-top: 1.5rem; display: flex; gap: 1rem;">';
+                    if (project.githubLink) {
+                        linksSection += `<a href="${project.githubLink}" target="_blank" class="btn github-link"><i class="fab fa-github"></i> View on GitHub</a>`;
+                    }
+                    if (project.liveLink) {
+                        linksSection += `<a href="${project.liveLink}" target="_blank" class="btn btn-outline"><i class="fas fa-external-link-alt"></i> Live Demo</a>`;
+                    }
+                    if (project.downloadLink) {
+                        linksSection += `<a href="${project.downloadLink}" class="btn btn-accent"><i class="fas fa-download"></i> Download Report</a>`;
+                    }
+                    linksSection += '</div>';
+                }
+                
                 modal.innerHTML = `
                     <div class="modal-content">
                         <span class="close-modal">&times;</span>
                         <h2>${project.title}</h2>
-                        <img src="${project.imageUrl}" alt="${project.title}">
+                        ${project.imageUrl 
+                            ? `<img src="${project.imageUrl}" alt="${project.title}">` 
+                            : `<div class="project-image-placeholder" style="height: 300px;">${project.title}</div>`}
                         <p>${project.description}</p>
                         <div class="technologies">
                             ${project.technologies.map(tech => `<span>${tech}</span>`).join('')}
                         </div>
-                        <a href="${project.githubLink}" target="_blank" class="btn github-link">View on GitHub</a>
+                        ${linksSection}
                     </div>
                 `;
 
@@ -1267,82 +1305,6 @@
                 });
             }
 
-            // Form Validation and Submission
-            function initContactForm() {
-                const form = document.querySelector('.contact-form');
-                
-                form.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    
-                    const name = form.querySelector('input[type="text"]');
-                    const email = form.querySelector('input[type="email"]');
-                    const message = form.querySelector('textarea');
-
-                    if (validateForm(name, email, message)) {
-                        // Simulated form submission
-                        showNotification('Message sent successfully! I will get back to you soon.', 'success');
-                        form.reset();
-                    }
-                });
-            }
-
-            function validateForm(name, email, message) {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                let isValid = true;
-
-                if (name.value.trim().length < 2) {
-                    showNotification('Please enter a valid name', 'error');
-                    isValid = false;
-                }
-
-                if (!emailRegex.test(email.value)) {
-                    showNotification('Please enter a valid email address', 'error');
-                    isValid = false;
-                }
-
-                if (message.value.trim().length < 10) {
-                    showNotification('Message must be at least 10 characters long', 'error');
-                    isValid = false;
-                }
-
-                return isValid;
-            }
-
-            function showNotification(message, type) {
-                const notification = document.createElement('div');
-                notification.classList.add('notification', type);
-                notification.textContent = message;
-                document.body.appendChild(notification);
-                
-                setTimeout(() => {
-                    notification.classList.add('show');
-                }, 10);
-                
-                setTimeout(() => {
-                    notification.classList.remove('show');
-                    setTimeout(() => {
-                        document.body.removeChild(notification);
-                    }, 300);
-                }, 3000);
-            }
-
-            // Newsletter Subscription
-            function initNewsletterSubscription() {
-                const newsletterInput = document.querySelector('.newsletter input');
-                const subscribeButton = document.querySelector('.newsletter button');
-
-                subscribeButton.addEventListener('click', () => {
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    
-                    if (emailRegex.test(newsletterInput.value)) {
-                        showNotification('Thank you for subscribing to my newsletter!', 'success');
-                        newsletterInput.value = '';
-                    } else {
-                        showNotification('Please enter a valid email address', 'error');
-                    }
-                });
-            }
-
             // Easter Egg Trigger
             function initEasterEgg() {
                 const secretTrigger = document.querySelector('.hero-image');
@@ -1363,39 +1325,22 @@
                 });
             }
 
-            // Language Learning Progress Visualization
-            function initLanguageProgress() {
-                const languages = [
-                    { name: 'Python', level: 'Advanced', percentage: 90 },
-                    { name: 'JavaScript', level: 'Intermediate', percentage: 75 },
-                    { name: 'Spanish', level: 'Conversational', percentage: 60 }
-                ];
-
-                const languageContainer = document.createElement('div');
-                languageContainer.classList.add('language-progress');
+            function showNotification(message, type) {
+                const notification = document.createElement('div');
+                notification.classList.add('notification', type);
+                notification.textContent = message;
+                document.body.appendChild(notification);
                 
-                languages.forEach(lang => {
-                    const progressBar = document.createElement('div');
-                    progressBar.classList.add('language-progress-bar');
-                    progressBar.innerHTML = `
-                        <div class="language-info">
-                            <span>${lang.name}</span>
-                            <span>${lang.level}</span>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-fill" style="width: 0"></div>
-                        </div>
-                    `;
-                    languageContainer.appendChild(progressBar);
-                    
-                    // Animate progress bar
+                setTimeout(() => {
+                    notification.classList.add('show');
+                }, 10);
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
                     setTimeout(() => {
-                        progressBar.querySelector('.progress-fill').style.width = `${lang.percentage}%`;
-                    }, 100);
-                });
-
-                // Add to personal development section (you would need to add this section to your HTML)
-                // document.querySelector('.language-progress-container').appendChild(languageContainer);
+                        document.body.removeChild(notification);
+                    }, 300);
+                }, 3000);
             }
 
             // Initialize All Functions
@@ -1405,46 +1350,12 @@
                 initSmoothScroll();
                 initActiveNav();
                 initProjectInteractivity();
-                initContactForm();
-                initNewsletterSubscription();
                 initEasterEgg();
-                initLanguageProgress();
             }
 
             // Run initialization
             init();
         });
-
-        // Notification styles
-        const style = document.createElement('style');
-        style.textContent = `
-            .notification {
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-                padding: 1rem 1.5rem;
-                border-radius: var(--border-radius);
-                color: white;
-                transform: translateY(100px);
-                opacity: 0;
-                transition: var(--transition);
-                z-index: 3000;
-            }
-            
-            .notification.show {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            
-            .notification.success {
-                background-color: var(--success);
-            }
-            
-            .notification.error {
-                background-color: var(--danger);
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 </html>
