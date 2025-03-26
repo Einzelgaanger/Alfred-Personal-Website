@@ -10,20 +10,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1a73e8;
-            --primary-dark: #0d5bbc;
-            --secondary: #6c63ff;
-            --dark: #121212;
-            --dark-alt: #2d3748;
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --primary-transparent: rgba(37, 99, 235, 0.1);
+            --secondary: #7c3aed;
+            --dark: #0f172a;
+            --dark-alt: #1e293b;
             --light: #ffffff;
-            --light-alt: #f8f9fa;
-            --accent: #ffab00;
-            --success: #00c853;
-            --danger: #ff3d00;
-            --border-radius: 12px;
-            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --transition: all 0.3s ease;
+            --light-alt: #f8fafc;
+            --gray: #94a3b8;
+            --accent: #f59e0b;
+            --accent-light: #fbbf24;
+            --success: #10b981;
+            --danger: #ef4444;
+            --border-radius: 16px;
+            --border-radius-sm: 8px;
+            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --max-width: 1440px;
         }
 
         * {
@@ -32,12 +42,22 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             color: var(--dark);
             background-color: var(--light);
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection {
+            background-color: var(--primary);
+            color: white;
         }
 
         code, pre {
@@ -45,25 +65,38 @@
         }
 
         h1, h2, h3, h4, h5, h6 {
-            font-weight: 600;
+            font-weight: 700;
             line-height: 1.2;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
-        h1 { font-size: 2.5rem; }
-        h2 { font-size: 2rem; }
-        h3 { font-size: 1.5rem; }
-        h4 { font-size: 1.25rem; }
+        h1 { 
+            font-size: clamp(2.5rem, 5vw, 4rem); 
+            letter-spacing: -0.05em;
+        }
+        h2 { 
+            font-size: clamp(2rem, 4vw, 3rem); 
+            letter-spacing: -0.03em;
+        }
+        h3 { 
+            font-size: clamp(1.5rem, 3vw, 2rem); 
+            letter-spacing: -0.02em;
+        }
+        h4 { 
+            font-size: clamp(1.25rem, 2.5vw, 1.5rem); 
+        }
 
         p {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             color: var(--dark-alt);
+            font-size: clamp(1rem, 1.1vw, 1.125rem);
+            line-height: 1.7;
         }
 
         a {
             text-decoration: none;
             color: var(--primary);
-            transition: var(--transition);
+            transition: var(--transition-fast);
         }
 
         a:hover {
@@ -82,20 +115,28 @@
 
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: var(--max-width);
             margin: 0 auto;
-            padding: 0 1.5rem;
+            padding: 0 2rem;
         }
 
         .section {
-            padding: 5rem 0;
+            padding: 8rem 0;
             position: relative;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             position: relative;
+            overflow: hidden;
+        }
+
+        .section-title span {
+            display: inline-block;
+            transform: translateY(100%);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
         }
 
         .section-title::after {
@@ -104,38 +145,69 @@
             width: 80px;
             height: 4px;
             background: linear-gradient(to right, var(--primary), var(--secondary));
-            margin: 1rem auto;
+            margin: 1.5rem auto;
             border-radius: 2px;
+            transform: scaleX(0);
+            transform-origin: center;
+            animation: scaleIn 0.8s 0.4s ease forwards;
         }
 
         .btn {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.875rem 2rem;
             background-color: var(--primary);
             color: white;
             border-radius: var(--border-radius);
-            font-weight: 500;
+            font-weight: 600;
             transition: var(--transition);
             border: none;
             cursor: pointer;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, var(--primary-dark), var(--secondary));
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
         }
 
         .btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             box-shadow: var(--shadow);
+        }
+
+        .btn:hover::before {
+            opacity: 1;
         }
 
         .btn-outline {
             background-color: transparent;
             border: 2px solid var(--primary);
             color: var(--primary);
+            box-shadow: none;
+        }
+
+        .btn-outline::before {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
         }
 
         .btn-outline:hover {
-            background-color: var(--primary);
             color: white;
+            border-color: transparent;
         }
 
         .btn-accent {
@@ -143,21 +215,47 @@
         }
 
         .btn-accent:hover {
-            background-color: #e67e22;
+            background-color: var(--accent-light);
+        }
+
+        .btn-lg {
+            padding: 1rem 2.5rem;
+            font-size: 1.125rem;
         }
 
         .card {
             background-color: white;
             border-radius: var(--border-radius);
-            padding: 2rem;
+            padding: 2.5rem;
             box-shadow: var(--shadow);
             transition: var(--transition);
             margin-bottom: 2rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
         .text-center {
@@ -172,6 +270,10 @@
             color: var(--accent);
         }
 
+        .text-gray {
+            color: var(--gray);
+        }
+
         .bg-dark {
             background-color: var(--dark);
             color: white;
@@ -181,8 +283,18 @@
             color: white;
         }
 
+        .bg-dark-alt {
+            background-color: var(--dark-alt);
+            color: white;
+        }
+
         .bg-light-alt {
             background-color: var(--light-alt);
+        }
+
+        .bg-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
         }
 
         /* Header Styles */
@@ -192,14 +304,14 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             transition: var(--transition);
         }
 
         header.scrolled {
-            background-color: rgba(255, 255, 255, 0.98);
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
 
@@ -211,24 +323,39 @@
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             font-weight: 700;
             color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
         }
 
         .logo span {
             color: var(--dark);
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo:hover span {
+            color: var(--primary);
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .nav-links a {
             color: var(--dark);
             font-weight: 500;
             position: relative;
+            font-size: 1.1rem;
+            transition: var(--transition-fast);
         }
 
         .nav-links a::after {
@@ -237,9 +364,14 @@
             bottom: -5px;
             left: 0;
             width: 0;
-            height: 2px;
-            background-color: var(--primary);
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
             transition: var(--transition);
+            border-radius: 3px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
         }
 
         .nav-links a:hover::after {
@@ -248,15 +380,26 @@
 
         .nav-links a.active {
             color: var(--primary);
+            font-weight: 600;
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
         }
 
         .mobile-menu-btn {
             display: none;
             background: none;
             border: none;
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             color: var(--dark);
             cursor: pointer;
+            transition: var(--transition-fast);
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--primary);
         }
 
         /* Hero Section */
@@ -266,13 +409,28 @@
             align-items: center;
             padding-top: 80px;
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #home::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, var(--primary-transparent) 0%, transparent 70%);
+            z-index: 0;
         }
 
         .hero-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 4rem;
             align-items: center;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-text {
@@ -283,13 +441,21 @@
             position: relative;
             border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-lg);
+            transform-style: preserve-3d;
+            perspective: 1000px;
         }
 
         .hero-image img {
             width: 100%;
             height: auto;
             border-radius: var(--border-radius);
+            transition: var(--transition);
+            transform: translateZ(20px);
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.03) translateZ(20px);
         }
 
         .hero-image::before {
@@ -299,19 +465,51 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom right, rgba(26, 115, 232, 0.3), rgba(108, 99, 255, 0.3));
+            background: linear-gradient(to bottom right, rgba(37, 99, 235, 0.3), rgba(124, 58, 237, 0.3));
             z-index: 1;
             border-radius: var(--border-radius);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .hero-image:hover::before {
+            opacity: 1;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 20px;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom right, var(--primary), var(--secondary));
+            z-index: -1;
+            border-radius: var(--border-radius);
+            opacity: 0.2;
+            filter: blur(20px);
+            transition: var(--transition);
+        }
+
+        .hero-image:hover::after {
+            opacity: 0.4;
+            bottom: -15px;
+            left: 15px;
         }
 
         .hero-title {
-            font-size: 3rem;
+            font-size: clamp(2.5rem, 5vw, 4rem);
             margin-bottom: 1.5rem;
             line-height: 1.1;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
         }
 
         .hero-subtitle {
-            font-size: 1.25rem;
+            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
             color: var(--dark-alt);
             margin-bottom: 2rem;
             font-weight: 400;
@@ -319,53 +517,93 @@
 
         .hero-btns {
             display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
         }
 
         .mission-statement {
             background-color: white;
-            padding: 1.5rem;
+            padding: 2rem;
             border-radius: var(--border-radius);
-            margin-top: 2rem;
+            margin-top: 2.5rem;
             box-shadow: var(--shadow);
-            border-left: 4px solid var(--primary);
+            border-left: 5px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .mission-statement:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
 
         /* Academic Section */
         .academic-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
         }
 
         .course-card {
             background-color: white;
             border-radius: var(--border-radius);
-            padding: 1.5rem;
+            padding: 2rem;
             box-shadow: var(--shadow);
             transition: var(--transition);
-            border-top: 3px solid var(--primary);
+            border-top: 5px solid var(--primary);
+            position: relative;
+            overflow: hidden;
         }
 
         .course-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
         }
 
         .course-card h4 {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
         }
 
         .course-card p {
             color: var(--dark-alt);
-            font-size: 0.9rem;
+            font-size: 1rem;
+        }
+
+        .course-card ul {
+            margin-top: 1rem;
+        }
+
+        .course-card ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-alt);
+        }
+
+        .course-card ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        .course-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
         }
 
         /* Projects Section */
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 2.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .project-card {
@@ -374,17 +612,33 @@
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
         }
 
         .project-card img {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
         }
 
         .project-content {
-            padding: 1.5rem;
+            padding: 2rem;
             background-color: white;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-tags {
@@ -397,17 +651,31 @@
         .project-tag {
             background-color: var(--light-alt);
             color: var(--dark);
-            padding: 0.25rem 0.75rem;
+            padding: 0.375rem 0.875rem;
             border-radius: 50px;
-            font-size: 0.75rem;
+            font-size: 0.875rem;
             font-weight: 500;
+            transition: var(--transition-fast);
+        }
+
+        .project-tag:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .project-actions {
+            margin-top: auto;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
         /* Resume Section */
         .timeline {
             position: relative;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
+            padding: 0 2rem;
         }
 
         .timeline::before {
@@ -416,23 +684,32 @@
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 2px;
+            width: 3px;
             height: 100%;
-            background-color: var(--light-alt);
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            border-radius: 3px;
         }
 
         .timeline-item {
             position: relative;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: var(--transition);
         }
 
         .timeline-item:nth-child(odd) {
-            padding-right: calc(50% + 2rem);
+            padding-right: calc(50% + 3rem);
             text-align: right;
         }
 
         .timeline-item:nth-child(even) {
-            padding-left: calc(50% + 2rem);
+            padding-left: calc(50% + 3rem);
         }
 
         .timeline-dot {
@@ -440,85 +717,133 @@
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
-            background-color: var(--primary);
+            background: linear-gradient(to right, var(--primary), var(--secondary));
             z-index: 1;
+            box-shadow: 0 0 0 4px white, 0 0 0 6px var(--primary);
         }
 
         .timeline-content {
             background-color: white;
-            padding: 1.5rem;
+            padding: 2rem;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
 
         .timeline-date {
             display: block;
             color: var(--accent);
-            font-weight: 500;
-            margin-bottom: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
         }
 
         /* Skills Section */
         .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
         }
 
         .skill-item {
             background-color: white;
-            padding: 1.5rem;
+            padding: 2rem;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             text-align: center;
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .skill-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
         }
 
         .skill-icon {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--primary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .skill-item:hover .skill-icon {
+            transform: scale(1.1);
         }
 
         /* Contact Section */
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            max-width: 800px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
         .contact-card {
             background-color: white;
             border-radius: var(--border-radius);
-            padding: 1.5rem;
+            padding: 2.5rem;
             text-align: center;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .contact-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
         }
 
         .contact-icon {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: var(--light-alt);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover .contact-icon {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            transform: scale(1.1);
         }
 
         .contact-link {
             display: block;
-            margin-top: 1rem;
-            font-weight: 500;
+            margin-top: 1.5rem;
+            font-weight: 600;
+            color: var(--dark);
+            transition: var(--transition-fast);
+        }
+
+        .contact-link:hover {
+            color: var(--primary);
+        }
+
+        .contact-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         /* Social Media Colors */
@@ -546,45 +871,108 @@
         footer {
             background-color: var(--dark);
             color: white;
-            padding: 3rem 0;
+            padding: 5rem 0 3rem;
             text-align: center;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
         }
 
         .footer-content {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 2rem;
+            gap: 3rem;
         }
 
         .social-links {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1rem;
-            max-width: 600px;
+            gap: 1.5rem;
+            max-width: 800px;
         }
 
         .social-link {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: white;
             transition: var(--transition);
-            font-size: 1.25rem;
+            font-size: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
         }
 
         .social-link:hover {
-            transform: translateY(-3px) scale(1.1);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-link:hover::before {
+            opacity: 1;
         }
 
         .copyright {
             color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
+            font-size: 1rem;
+            margin-top: 3rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow);
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
 
         /* Project Modal */
@@ -594,7 +982,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.9);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -602,6 +990,9 @@
             opacity: 0;
             visibility: hidden;
             transition: var(--transition);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 2rem;
         }
 
         .project-modal.active {
@@ -611,15 +1002,16 @@
 
         .modal-content {
             background-color: white;
-            padding: 2rem;
+            padding: 3rem;
             border-radius: var(--border-radius);
-            max-width: 800px;
-            width: 90%;
+            max-width: 1000px;
+            width: 100%;
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
-            transform: translateY(20px);
+            transform: translateY(50px);
             transition: var(--transition);
+            box-shadow: var(--shadow-lg);
         }
 
         .project-modal.active .modal-content {
@@ -628,47 +1020,180 @@
 
         .close-modal {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 1.5rem;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 1.75rem;
             cursor: pointer;
             color: var(--dark);
-            transition: var(--transition);
+            transition: var(--transition-fast);
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
         }
 
         .close-modal:hover {
             color: var(--danger);
+            background-color: rgba(0, 0, 0, 0.05);
         }
 
         .modal-content img {
             width: 100%;
             height: auto;
-            border-radius: var(--border-radius);
-            margin: 1rem 0;
+            border-radius: var(--border-radius-sm);
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
         }
 
         .technologies {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 1rem 0;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
         }
 
         .technologies span {
             background-color: var(--light-alt);
             color: var(--dark);
-            padding: 0.25rem 0.75rem;
+            padding: 0.5rem 1rem;
             border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 500;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: var(--transition-fast);
         }
 
-        .github-link {
-            display: inline-block;
-            margin-top: 1rem;
+        .technologies span:hover {
+            background-color: var(--primary);
+            color: white;
         }
+
+        .project-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        /* Project Image Placeholder */
+        .project-image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-alt);
+            font-weight: 600;
+            border-radius: var(--border-radius-sm);
+        }
+
+        /* Notification styles */
+        .notification {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            color: white;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 3000;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            max-width: 400px;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .notification.success {
+            background-color: var(--success);
+        }
+        
+        .notification.error {
+            background-color: var(--danger);
+        }
+
+        .notification i {
+            font-size: 1.5rem;
+        }
+
+        /* Download Button */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 2rem;
+            background-color: var(--primary);
+            color: white;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: var(--shadow);
+        }
+
+        .download-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .animate-fade {
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        .delay-5 { animation-delay: 1s; }
 
         /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+
         @media (max-width: 992px) {
             .hero-content {
                 grid-template-columns: 1fr;
@@ -678,6 +1203,7 @@
                 order: 2;
                 text-align: center;
                 max-width: 100%;
+                margin: 0 auto;
             }
 
             .hero-image {
@@ -696,7 +1222,7 @@
 
             .timeline-item:nth-child(odd),
             .timeline-item:nth-child(even) {
-                padding-left: 4.5rem;
+                padding-left: 5rem;
                 padding-right: 2rem;
                 text-align: left;
             }
@@ -709,20 +1235,27 @@
         @media (max-width: 768px) {
             .nav-links {
                 position: fixed;
-                top: 80px;
+                top: 0;
                 left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
+                width: 80%;
+                height: 100vh;
                 background-color: white;
                 flex-direction: column;
-                align-items: center;
-                padding: 2rem 0;
+                align-items: flex-start;
+                padding: 6rem 2rem 2rem;
                 transition: var(--transition);
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                z-index: 999;
             }
 
             .nav-links.active {
                 left: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.25rem;
+                padding: 0.75rem 0;
+                width: 100%;
             }
 
             .mobile-menu-btn {
@@ -730,7 +1263,11 @@
             }
 
             .section {
-                padding: 3rem 0;
+                padding: 5rem 0;
+            }
+
+            .section-title {
+                margin-bottom: 3rem;
             }
 
             .hero-title {
@@ -738,15 +1275,23 @@
             }
 
             .hero-subtitle {
-                font-size: 1.1rem;
+                font-size: 1.25rem;
             }
 
-            .contact-grid {
+            .project-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                padding: 2rem;
             }
         }
 
         @media (max-width: 576px) {
+            .container {
+                padding: 0 1rem;
+            }
+
             .hero-btns {
                 flex-direction: column;
                 gap: 1rem;
@@ -756,95 +1301,31 @@
                 width: 100%;
             }
 
-            .project-grid {
+            .contact-grid {
                 grid-template-columns: 1fr;
             }
 
             .social-links {
-                gap: 0.75rem;
+                gap: 1rem;
             }
 
             .social-link {
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+            }
+
+            .back-to-top {
                 width: 45px;
                 height: 45px;
-                font-size: 1.1rem;
+                font-size: 1.25rem;
+                bottom: 1.5rem;
+                right: 1.5rem;
             }
-        }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .animate-fade {
-            animation: fadeIn 0.6s ease forwards;
-        }
-
-        .delay-1 { animation-delay: 0.2s; }
-        .delay-2 { animation-delay: 0.4s; }
-        .delay-3 { animation-delay: 0.6s; }
-        .delay-4 { animation-delay: 0.8s; }
-
-        /* Notification styles */
-        .notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            padding: 1rem 1.5rem;
-            border-radius: var(--border-radius);
-            color: white;
-            transform: translateY(100px);
-            opacity: 0;
-            transition: var(--transition);
-            z-index: 3000;
-        }
-        
-        .notification.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .notification.success {
-            background-color: var(--success);
-        }
-        
-        .notification.error {
-            background-color: var(--danger);
-        }
-
-        /* Download Button */
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            background-color: var(--primary);
-            color: white;
-            border-radius: var(--border-radius);
-            font-weight: 500;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .download-btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
-        }
-
-        /* Project Image Placeholder */
-        .project-image-placeholder {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark-alt);
-            font-weight: 500;
+            .modal-content {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -853,7 +1334,10 @@
     <header id="header">
         <div class="container">
             <nav>
-                <a href="#" class="logo">Einzel<span>.</span></a>
+                <a href="#" class="logo animate-fade">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Alfred</span>
+                </a>
                 
                 <ul class="nav-links">
                     <li><a href="#home" class="active">Home</a></li>
@@ -863,7 +1347,7 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 
-                <button class="mobile-menu-btn">
+                <button class="mobile-menu-btn animate-fade">
                     <i class="fas fa-bars"></i>
                 </button>
             </nav>
@@ -875,8 +1359,8 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text animate-fade">
-                    <h1 class="hero-title">Hi, I'm <span class="text-primary">Alfred Mulinge Maweu</span></h1>
-                    <h2 class="hero-subtitle">Statistics & Data Science Student at Strathmore University</h2>
+                    <h1 class="hero-title">Hi, I'm <span>Alfred Mulinge Maweu</span></h1>
+                    <h2 class="hero-subtitle">Statistics & Data Science Professional</h2>
                     
                     <p>A passionate quantitative analyst with expertise in predictive modeling, financial analytics, and data-driven decision making. My interdisciplinary approach combines rigorous statistical methods with cutting-edge technology to solve complex real-world problems across industries.</p>
                     
@@ -886,8 +1370,8 @@
                     </div>
 
                     <div class="hero-btns animate-fade delay-2">
-                        <a href="#contact" class="btn">Contact Me</a>
-                        <a href="#projects" class="btn btn-outline">View My Work</a>
+                        <a href="#contact" class="btn btn-lg">Contact Me</a>
+                        <a href="#projects" class="btn btn-outline btn-lg">View My Work</a>
                     </div>
                 </div>
                 
@@ -901,18 +1385,22 @@
     <!-- Academic & Learning Section -->
     <section id="academic" class="section bg-light-alt">
         <div class="container">
-            <h2 class="section-title">Academic Journey</h2>
+            <h2 class="section-title"><span>Academic Journey</span></h2>
             
             <div class="academic-grid">
                 <div class="course-card animate-fade">
-                    <i class="fas fa-graduation-cap text-primary" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                    <div class="course-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
                     <h3>Strathmore University</h3>
                     <p class="text-accent">B.Sc. Statistics & Data Science | 2021-2025</p>
                     <p>Specializing in predictive analytics and econometric modeling with coursework spanning machine learning, statistical computing, and business intelligence applications. Expected graduation: June 2028.</p>
                 </div>
                 
                 <div class="course-card animate-fade delay-1">
-                    <i class="fas fa-book text-primary" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                    <div class="course-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
                     <h3>Research & Publications</h3>
                     <ul>
                         <li>Comprehensive analysis of Islamic banking customer acquisition strategies</li>
@@ -923,7 +1411,9 @@
                 </div>
                 
                 <div class="course-card animate-fade delay-2">
-                    <i class="fas fa-road text-primary" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                    <div class="course-icon">
+                        <i class="fas fa-road"></i>
+                    </div>
                     <h3>Professional Development</h3>
                     <ul>
                         <li>Full-stack web application development (Django, React, Node.js)</li>
@@ -939,7 +1429,7 @@
     <!-- Projects Section -->
     <section id="projects" class="section">
         <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
+            <h2 class="section-title"><span>Featured Projects</span></h2>
             
             <div class="project-grid" id="project-container">
                 <!-- Projects will be dynamically inserted here by JavaScript -->
@@ -950,10 +1440,10 @@
     <!-- Resume & Career Section -->
     <section id="resume" class="section bg-light-alt">
         <div class="container">
-            <h2 class="section-title">Professional Experience</h2>
+            <h2 class="section-title"><span>Professional Experience</span></h2>
             
             <div class="timeline">
-                <div class="timeline-item animate-fade">
+                <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="timeline-date">Jan 2025 - Present</span>
@@ -963,7 +1453,7 @@
                     </div>
                 </div>
                 
-                <div class="timeline-item animate-fade delay-1">
+                <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="timeline-date">Feb - Mar 2025</span>
@@ -973,7 +1463,7 @@
                     </div>
                 </div>
                 
-                <div class="timeline-item animate-fade delay-2">
+                <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="timeline-date">Jan - Mar 2025</span>
@@ -984,8 +1474,8 @@
                 </div>
             </div>
             
-            <div class="text-center" style="margin-top: 3rem;">
-                <a href="#" class="download-btn">
+            <div class="text-center" style="margin-top: 4rem;">
+                <a href="#" class="download-btn btn-lg">
                     <i class="fas fa-download"></i>
                     Download Full Resume
                 </a>
@@ -996,7 +1486,7 @@
     <!-- Skills Section -->
     <section class="section">
         <div class="container">
-            <h2 class="section-title">Technical Expertise</h2>
+            <h2 class="section-title"><span>Technical Expertise</span></h2>
             
             <div class="skills-container">
                 <div class="skill-item animate-fade">
@@ -1034,48 +1524,105 @@
         </div>
     </section>
 
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-dark">
+        <div class="container">
+            <h2 class="section-title"><span>Get In Touch</span></h2>
+            
+            <div class="contact-grid">
+                <div class="contact-card animate-fade">
+                    <div class="contact-icon email">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>For professional inquiries and collaborations</p>
+                    <a href="mailto:hello@alfredmaweu.com" class="contact-link">hello@alfredmaweu.com</a>
+                    <div class="contact-actions">
+                        <a href="mailto:hello@alfredmaweu.com" class="btn btn-outline">Send Email</a>
+                    </div>
+                </div>
+                
+                <div class="contact-card animate-fade delay-1">
+                    <div class="contact-icon whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>WhatsApp</h3>
+                    <p>For quick messages and informal communication</p>
+                    <a href="https://wa.me/254712345678" class="contact-link">+254 712 345 678</a>
+                    <div class="contact-actions">
+                        <a href="https://wa.me/254712345678" class="btn btn-outline">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <a href="tel:+254712345678" class="btn btn-outline">
+                            <i class="fas fa-phone"></i> Call
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-card animate-fade delay-2">
+                    <div class="contact-icon linkedin">
+                        <i class="fab fa-linkedin-in"></i>
+                    </div>
+                    <h3>LinkedIn</h3>
+                    <p>For professional networking and career opportunities</p>
+                    <a href="https://linkedin.com/in/alfredmaweu" class="contact-link">linkedin.com/in/alfredmaweu</a>
+                    <div class="contact-actions">
+                        <a href="https://linkedin.com/in/alfredmaweu" class="btn btn-outline">View Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
-            <div class="social-links">
-                <!-- Professional Networks -->
-                <a href="https://linkedin.com/in/alfredmaweu" class="social-link linkedin" title="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="https://github.com/alfredmaweu" class="social-link github" title="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://stackoverflow.com/users/alfredmaweu" class="social-link stack-overflow" title="Stack Overflow">
-                    <i class="fab fa-stack-overflow"></i>
-                </a>
+            <div class="footer-content">
+                <div class="social-links">
+                    <!-- Professional Networks -->
+                    <a href="https://linkedin.com/in/alfredmaweu" class="social-link linkedin" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/alfredmaweu" class="social-link github" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://stackoverflow.com/users/alfredmaweu" class="social-link stack-overflow" title="Stack Overflow">
+                        <i class="fab fa-stack-overflow"></i>
+                    </a>
+                    
+                    <!-- Communication -->
+                    <a href="mailto:hello@alfredmaweu.com" class="social-link email" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://wa.me/254712345678" class="social-link whatsapp" title="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="tel:+254712345678" class="social-link phone" title="Phone">
+                        <i class="fas fa-phone"></i>
+                    </a>
+                    
+                    <!-- Social Media -->
+                    <a href="https://twitter.com/alfredmaweu" class="social-link twitter" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://instagram.com/alfredmaweu" class="social-link instagram" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    
+                    <!-- Developer Profiles -->
+                    <a href="https://codepen.io/alfredmaweu" class="social-link codepen" title="CodePen">
+                        <i class="fab fa-codepen"></i>
+                    </a>
+                </div>
                 
-                <!-- Communication -->
-                <a href="mailto:hello@alfredmaweu.com" class="social-link email" title="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
-                <a href="https://wa.me/254712345678" class="social-link whatsapp" title="WhatsApp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="https://t.me/alfredmaweu" class="social-link telegram" title="Telegram">
-                    <i class="fab fa-telegram"></i>
-                </a>
-                
-                <!-- Social Media -->
-                <a href="https://twitter.com/alfredmaweu" class="social-link twitter" title="Twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="https://instagram.com/alfredmaweu" class="social-link instagram" title="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                
-                <!-- Developer Profiles -->
-                <a href="https://codepen.io/alfredmaweu" class="social-link codepen" title="CodePen">
-                    <i class="fab fa-codepen"></i>
-                </a>
+                <p class="copyright">© 2025 Alfred Mulinge Maweu. All rights reserved.</p>
             </div>
-            
-            <p class="copyright">© 2025 Alfred Mulinge Maweu. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
 
     <!-- Easter Egg Section -->
     <div id="easter-egg" style="display:none;">
@@ -1165,6 +1712,26 @@
                 });
             }
 
+            // Back to top button
+            function initBackToTop() {
+                const backToTopBtn = document.querySelector('.back-to-top');
+                
+                window.addEventListener('scroll', () => {
+                    if (window.pageYOffset > 300) {
+                        backToTopBtn.classList.add('visible');
+                    } else {
+                        backToTopBtn.classList.remove('visible');
+                    }
+                });
+                
+                backToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
             // Project Portfolio Filtering and Modal
             function initProjectInteractivity() {
                 const projects = [
@@ -1229,8 +1796,10 @@
                             <div class="project-tags">
                                 ${project.technologies.map(tech => `<span class="project-tag">${tech}</span>`).join('')}
                             </div>
-                            <p>${project.description.substring(0, 100)}...</p>
-                            <button class="btn btn-outline view-project" style="margin-top: 1rem;">View Details</button>
+                            <p>${project.description.substring(0, 120)}...</p>
+                            <div class="project-actions">
+                                <button class="btn view-project">View Details</button>
+                            </div>
                         </div>
                     `;
                     
@@ -1250,7 +1819,7 @@
                 // Build links section
                 let linksSection = '';
                 if (project.githubLink || project.liveLink || project.downloadLink) {
-                    linksSection = '<div class="project-links" style="margin-top: 1.5rem; display: flex; gap: 1rem;">';
+                    linksSection = '<div class="project-links">';
                     if (project.githubLink) {
                         linksSection += `<a href="${project.githubLink}" target="_blank" class="btn github-link"><i class="fab fa-github"></i> View on GitHub</a>`;
                     }
@@ -1265,11 +1834,11 @@
                 
                 modal.innerHTML = `
                     <div class="modal-content">
-                        <span class="close-modal">&times;</span>
+                        <button class="close-modal">&times;</button>
                         <h2>${project.title}</h2>
                         ${project.imageUrl 
                             ? `<img src="${project.imageUrl}" alt="${project.title}">` 
-                            : `<div class="project-image-placeholder" style="height: 300px;">${project.title}</div>`}
+                            : `<div class="project-image-placeholder">${project.title}</div>`}
                         <p>${project.description}</p>
                         <div class="technologies">
                             ${project.technologies.map(tech => `<span>${tech}</span>`).join('')}
@@ -1285,12 +1854,14 @@
                 // Trigger reflow to enable transition
                 setTimeout(() => {
                     modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
                 }, 10);
 
                 modal.querySelector('.close-modal').addEventListener('click', () => {
                     modal.classList.remove('active');
                     setTimeout(() => {
                         document.body.removeChild(modal);
+                        document.body.style.overflow = '';
                     }, 300);
                 });
 
@@ -1300,8 +1871,40 @@
                         modal.classList.remove('active');
                         setTimeout(() => {
                             document.body.removeChild(modal);
+                            document.body.style.overflow = '';
                         }, 300);
                     }
+                });
+
+                // Close with ESC key
+                document.addEventListener('keydown', function handleEsc(e) {
+                    if (e.key === 'Escape') {
+                        modal.classList.remove('active');
+                        setTimeout(() => {
+                            document.body.removeChild(modal);
+                            document.body.style.overflow = '';
+                            document.removeEventListener('keydown', handleEsc);
+                        }, 300);
+                    }
+                });
+            }
+
+            // Timeline animation on scroll
+            function initTimelineAnimation() {
+                const timelineItems = document.querySelectorAll('.timeline-item');
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, {
+                    threshold: 0.1
+                });
+                
+                timelineItems.forEach(item => {
+                    observer.observe(item);
                 });
             }
 
@@ -1328,7 +1931,10 @@
             function showNotification(message, type) {
                 const notification = document.createElement('div');
                 notification.classList.add('notification', type);
-                notification.textContent = message;
+                notification.innerHTML = `
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+                    <span>${message}</span>
+                `;
                 document.body.appendChild(notification);
                 
                 setTimeout(() => {
@@ -1340,7 +1946,7 @@
                     setTimeout(() => {
                         document.body.removeChild(notification);
                     }, 300);
-                }, 3000);
+                }, 5000);
             }
 
             // Initialize All Functions
@@ -1349,12 +1955,24 @@
                 initHeaderScroll();
                 initSmoothScroll();
                 initActiveNav();
+                initBackToTop();
                 initProjectInteractivity();
+                initTimelineAnimation();
                 initEasterEgg();
             }
 
             // Run initialization
             init();
+        });
+
+        // Animate section titles on load
+        window.addEventListener('load', () => {
+            const sectionTitles = document.querySelectorAll('.section-title span');
+            sectionTitles.forEach((title, index) => {
+                setTimeout(() => {
+                    title.style.animation = `fadeInUp 0.8s ${index * 0.1}s ease forwards`;
+                }, 100);
+            });
         });
     </script>
 </body>
