@@ -544,6 +544,38 @@
             gap: 2.5rem;
         }
 
+        @media (max-width: 768px) {
+            .academic-grid {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 1rem;
+                gap: 1.5rem;
+                scroll-padding: 0 1.5rem;
+            }
+
+            .academic-grid::-webkit-scrollbar {
+                height: 8px;
+            }
+
+            .academic-grid::-webkit-scrollbar-track {
+                background: var(--light-alt);
+                border-radius: 10px;
+            }
+
+            .academic-grid::-webkit-scrollbar-thumb {
+                background: var(--primary);
+                border-radius: 10px;
+            }
+
+            .course-card {
+                scroll-snap-align: start;
+                min-width: 85vw;
+                margin: 0 0.5rem;
+            }
+        }
+
         .course-card {
             background-color: white;
             border-radius: var(--border-radius);
@@ -602,7 +634,33 @@
 
         @media (max-width: 768px) {
             .project-grid {
-                grid-template-columns: 1fr;
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 1rem;
+                gap: 1.5rem;
+                scroll-padding: 0 1.5rem;
+            }
+
+            .project-grid::-webkit-scrollbar {
+                height: 8px;
+            }
+
+            .project-grid::-webkit-scrollbar-track {
+                background: var(--light-alt);
+                border-radius: 10px;
+            }
+
+            .project-grid::-webkit-scrollbar-thumb {
+                background: var(--primary);
+                border-radius: 10px;
+            }
+
+            .project-card {
+                scroll-snap-align: start;
+                min-width: 85vw;
+                margin: 0 0.5rem;
             }
         }
 
@@ -676,6 +734,30 @@
             max-width: 900px;
             margin: 0 auto;
             padding: 0 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .timeline {
+                padding: 0 1rem;
+            }
+
+            .timeline::before {
+                left: 1.5rem;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding-left: 4rem;
+                padding-right: 1rem;
+            }
+
+            .timeline-dot {
+                left: 1.5rem;
+            }
+
+            .timeline-content {
+                padding: 1.5rem;
+            }
         }
 
         .timeline::before {
@@ -753,6 +835,39 @@
             gap: 2rem;
         }
 
+        @media (max-width: 768px) {
+            .skills-container {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 1rem;
+                gap: 1.5rem;
+                scroll-padding: 0 1.5rem;
+            }
+
+            .skills-container::-webkit-scrollbar {
+                height: 8px;
+            }
+
+            .skills-container::-webkit-scrollbar-track {
+                background: var(--light-alt);
+                border-radius: 10px;
+            }
+
+            .skills-container::-webkit-scrollbar-thumb {
+                background: var(--primary);
+                border-radius: 10px;
+            }
+
+            .skill-item {
+                scroll-snap-align: start;
+                min-width: 70vw;
+                margin: 0 0.5rem;
+                padding: 1.5rem;
+            }
+        }
+
         .skill-item {
             background-color: white;
             padding: 2rem;
@@ -784,16 +899,49 @@
         /* Contact Section */
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
             max-width: 1000px;
             margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 1rem;
+                gap: 1.5rem;
+                scroll-padding: 0 1.5rem;
+            }
+
+            .contact-grid::-webkit-scrollbar {
+                height: 8px;
+            }
+
+            .contact-grid::-webkit-scrollbar-track {
+                background: var(--light-alt);
+                border-radius: 10px;
+            }
+
+            .contact-grid::-webkit-scrollbar-thumb {
+                background: var(--primary);
+                border-radius: 10px;
+            }
+
+            .contact-card {
+                scroll-snap-align: start;
+                min-width: 70vw;
+                margin: 0 0.5rem;
+                padding: 1.5rem;
+            }
         }
 
         .contact-card {
             background-color: white;
             border-radius: var(--border-radius);
-            padding: 2.5rem;
+            padding: 1.5rem;
             text-align: center;
             box-shadow: var(--shadow);
             transition: var(--transition);
@@ -803,15 +951,15 @@
         }
 
         .contact-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
         }
 
         .contact-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            width: 80px;
-            height: 80px;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            width: 60px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -828,7 +976,7 @@
 
         .contact-link {
             display: block;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
             font-weight: 600;
             color: var(--dark);
             transition: var(--transition-fast);
@@ -841,7 +989,7 @@
         .contact-actions {
             display: flex;
             gap: 1rem;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -905,13 +1053,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: white;
             transition: var(--transition);
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             position: relative;
             overflow: hidden;
         }
@@ -940,7 +1088,7 @@
 
         .copyright {
             color: rgba(255, 255, 255, 0.7);
-            font-size: 1rem;
+            font-size: 0.9rem;
             margin-top: 3rem;
         }
 
@@ -1002,16 +1150,15 @@
 
         .modal-content {
             background-color: white;
-            padding: 3rem;
+            padding: 2rem;
             border-radius: var(--border-radius);
-            max-width: 1000px;
-            width: 100%;
+            max-width: 800px;
+            width: 90%;
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
-            transform: translateY(50px);
+            transform: translateY(20px);
             transition: var(--transition);
-            box-shadow: var(--shadow-lg);
         }
 
         .project-modal.active .modal-content {
@@ -1020,12 +1167,12 @@
 
         .close-modal {
             position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            font-size: 1.75rem;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
             cursor: pointer;
             color: var(--dark);
-            transition: var(--transition-fast);
+            transition: var(--transition);
             background: none;
             border: none;
             width: 40px;
@@ -1045,49 +1192,43 @@
             width: 100%;
             height: auto;
             border-radius: var(--border-radius-sm);
-            margin: 2rem 0;
+            margin: 1rem 0;
             box-shadow: var(--shadow);
         }
 
         .technologies {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.75rem;
-            margin: 1.5rem 0;
+            gap: 0.5rem;
+            margin: 1rem 0;
         }
 
         .technologies span {
             background-color: var(--light-alt);
             color: var(--dark);
-            padding: 0.5rem 1rem;
+            padding: 0.25rem 0.75rem;
             border-radius: 50px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            transition: var(--transition-fast);
-        }
-
-        .technologies span:hover {
-            background-color: var(--primary);
-            color: white;
+            font-size: 0.75rem;
+            font-weight: 500;
         }
 
         .project-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             flex-wrap: wrap;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
         }
 
         /* Project Image Placeholder */
         .project-image-placeholder {
             width: 100%;
-            height: 300px;
+            height: 250px;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--dark-alt);
-            font-weight: 600;
+            font-weight: 500;
             border-radius: var(--border-radius-sm);
         }
 
@@ -1096,18 +1237,17 @@
             position: fixed;
             bottom: 2rem;
             right: 2rem;
-            padding: 1rem 2rem;
+            padding: 1rem 1.5rem;
             border-radius: var(--border-radius);
             color: white;
             transform: translateY(100px);
             opacity: 0;
             transition: var(--transition);
             z-index: 3000;
-            box-shadow: var(--shadow);
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            max-width: 400px;
+            max-width: 350px;
         }
         
         .notification.show {
@@ -1124,30 +1264,29 @@
         }
 
         .notification i {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
         }
 
         /* Download Button */
         .download-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
-            padding: 0.875rem 2rem;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
             background-color: var(--primary);
             color: white;
             border-radius: var(--border-radius);
-            font-weight: 600;
+            font-weight: 500;
             transition: var(--transition);
             border: none;
             cursor: pointer;
             text-decoration: none;
-            box-shadow: var(--shadow);
         }
 
         .download-btn:hover {
             background-color: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
         }
 
         /* Animations */
@@ -1275,15 +1414,15 @@
             }
 
             .hero-subtitle {
-                font-size: 1.25rem;
-            }
-
-            .project-grid {
-                grid-template-columns: 1fr;
+                font-size: 1.1rem;
             }
 
             .modal-content {
-                padding: 2rem;
+                padding: 1.5rem;
+            }
+
+            #home {
+                padding-top: 70px;
             }
         }
 
@@ -1301,18 +1440,14 @@
                 width: 100%;
             }
 
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
             .social-links {
                 gap: 1rem;
             }
 
             .social-link {
-                width: 50px;
-                height: 50px;
-                font-size: 1.25rem;
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
             }
 
             .back-to-top {
@@ -1324,6 +1459,10 @@
             }
 
             .modal-content {
+                padding: 1.25rem;
+            }
+
+            .mission-statement {
                 padding: 1.5rem;
             }
         }
@@ -1370,8 +1509,8 @@
                     </div>
 
                     <div class="hero-btns animate-fade delay-2">
-                        <a href="#contact" class="btn btn-lg">Contact Me</a>
-                        <a href="#projects" class="btn btn-outline btn-lg">View My Work</a>
+                        <a href="#contact" class="btn">Contact Me</a>
+                        <a href="#projects" class="btn btn-outline">View My Work</a>
                     </div>
                 </div>
                 
@@ -1474,8 +1613,8 @@
                 </div>
             </div>
             
-            <div class="text-center" style="margin-top: 4rem;">
-                <a href="#" class="download-btn btn-lg">
+            <div class="text-center" style="margin-top: 3rem;">
+                <a href="#" class="download-btn">
                     <i class="fas fa-download"></i>
                     Download Full Resume
                 </a>
@@ -1536,7 +1675,6 @@
                     </div>
                     <h3>Email</h3>
                     <p>For professional inquiries and collaborations</p>
-                    <a href="mailto:hello@alfredmaweu.com" class="contact-link">hello@alfredmaweu.com</a>
                     <div class="contact-actions">
                         <a href="mailto:hello@alfredmaweu.com" class="btn btn-outline">Send Email</a>
                     </div>
@@ -1548,24 +1686,32 @@
                     </div>
                     <h3>WhatsApp</h3>
                     <p>For quick messages and informal communication</p>
-                    <a href="https://wa.me/254712345678" class="contact-link">+254 712 345 678</a>
                     <div class="contact-actions">
                         <a href="https://wa.me/254712345678" class="btn btn-outline">
-                            <i class="fab fa-whatsapp"></i> WhatsApp
-                        </a>
-                        <a href="tel:+254712345678" class="btn btn-outline">
-                            <i class="fas fa-phone"></i> Call
+                            <i class="fab fa-whatsapp"></i> Message
                         </a>
                     </div>
                 </div>
                 
                 <div class="contact-card animate-fade delay-2">
+                    <div class="contact-icon phone">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Phone</h3>
+                    <p>For direct calls and urgent matters</p>
+                    <div class="contact-actions">
+                        <a href="tel:+254712345678" class="btn btn-outline">
+                            <i class="fas fa-phone"></i> Call Now
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-card animate-fade delay-3">
                     <div class="contact-icon linkedin">
                         <i class="fab fa-linkedin-in"></i>
                     </div>
                     <h3>LinkedIn</h3>
                     <p>For professional networking and career opportunities</p>
-                    <a href="https://linkedin.com/in/alfredmaweu" class="contact-link">linkedin.com/in/alfredmaweu</a>
                     <div class="contact-actions">
                         <a href="https://linkedin.com/in/alfredmaweu" class="btn btn-outline">View Profile</a>
                     </div>
