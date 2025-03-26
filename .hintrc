@@ -14,10 +14,12 @@
       "default",
       {
         "ignore": [
-          "backdrop-filter"
+          "backdrop-filter",
+          "-webkit-overflow-scrolling"
         ]
       }
     ],
-    "disown-opener": "off"
+    "disown-opener": "off",
+    "css-prefix-order": "off"
   }
 }

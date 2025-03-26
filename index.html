@@ -17,9 +17,11 @@
             --secondary: #7c3aed;
             --dark: #0f172a;
             --dark-alt: #1e293b;
-            --light: #ffffff;
-            --light-alt: #f8fafc;
+            --light: #f8fafc;
+            --light-alt: #e2e8f0;
             --gray: #94a3b8;
+            --gray-light: #e2e8f0;
+            --gray-dark: #64748b;
             --accent: #f59e0b;
             --accent-light: #fbbf24;
             --success: #10b981;
@@ -304,7 +306,7 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.98);
+            background-color: rgba(248, 250, 252, 0.98);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -409,7 +411,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding-top: 80px;
+            padding-top: 120px;
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
             position: relative;
             overflow: hidden;
@@ -500,13 +502,14 @@
         }
 
         .hero-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2rem, 4vw, 3rem);
             margin-bottom: 1.5rem;
+            margin-top: 1.5rem;
             line-height: 1.1;
             background: linear-gradient(to right, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             background-clip: text;
-            color: transparent;
+            color: #000000;
             display: inline-block;
         }
 
@@ -611,6 +614,7 @@
             height: 100%;
             display: flex;
             flex-direction: column;
+            background-color: white;
         }
 
         .project-card:hover {
@@ -631,7 +635,6 @@
 
         .project-content {
             padding: 2rem;
-            background-color: white;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -660,7 +663,7 @@
         }
 
         .project-actions {
-            margin-top: auto;
+            margin-top: 1.5rem;
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
@@ -780,14 +783,14 @@
         /* Contact Section */
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1.5rem;
             max-width: 1000px;
             margin: 0 auto;
         }
 
         .contact-card {
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.1);
             border-radius: var(--border-radius);
             padding: 1.5rem;
             text-align: center;
@@ -796,24 +799,27 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 250px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .contact-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
+            background-color: rgba(255, 255, 255, 0.15);
         }
 
         .contact-icon {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            width: 50px;
-            height: 50px;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            width: 80px;
+            height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            background-color: var(--light-alt);
             transition: var(--transition);
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
         .contact-card:hover .contact-icon {
@@ -826,12 +832,12 @@
             display: block;
             margin-top: 1rem;
             font-weight: 600;
-            color: var(--dark);
+            color: white;
             transition: var(--transition-fast);
         }
 
         .contact-link:hover {
-            color: var(--primary);
+            color: var(--primary-light);
         }
 
         .contact-actions {
@@ -1184,6 +1190,12 @@
             .container {
                 padding: 0 1.5rem;
             }
+
+            .hero-image img {
+                max-height: 500px;
+                width: auto;
+                margin: 0 auto;
+            }
         }
 
         @media (max-width: 992px) {
@@ -1323,9 +1335,9 @@
             }
 
             .contact-icon {
-                font-size: 1.25rem;
-                width: 45px;
-                height: 45px;
+                font-size: 2rem;
+                width: 60px;
+                height: 60px;
             }
 
             .contact-actions .btn {
@@ -1489,7 +1501,7 @@
             <nav>
                 <a href="#" class="logo animate-fade">
                     <i class="fas fa-chart-line"></i>
-                    <span>Alfred</span>
+                    <span>Einzelgänger</span>
                 </a>
                 
                 <ul class="nav-links">
@@ -1546,7 +1558,7 @@
                         <i class="fas fa-graduation-cap"></i>
                     </div>
                     <h3>Strathmore University</h3>
-                    <p class="text-accent">B.Sc. Statistics & Data Science | 2021-2025</p>
+                    <p class="text-accent">B.Sc. Statistics & Data Science | 2024-2028</p>
                     <p>Specializing in predictive analytics and econometric modeling with coursework spanning machine learning, statistical computing, and business intelligence applications. Expected graduation: June 2028.</p>
                 </div>
                 
@@ -1602,7 +1614,7 @@
                         <span class="timeline-date">Jan 2025 - Present</span>
                         <h3>Data Analyst</h3>
                         <h4>USAID | ACDI/VOCA | RLA</h4>
-                        <p>Conducting comprehensive data analysis on the Russia-Ukraine conflict impacts, developing predictive models for humanitarian response planning, and creating frameworks for economic recovery prioritization. Reporting directly to UN stakeholders with actionable insights for crisis mitigation.</p>
+                        <p>Conducting comprehensive data analysis on the Russia-Ukraine conflict impacts, developing predictive models for humanitarian response planning, and creating frameworks for economic recovery prioritization. Reporting directly to Richard Kyalo, PhD, Technical Lead Data Analytics, with actionable insights for crisis mitigation.</p>
                     </div>
                 </div>
                 
@@ -1628,7 +1640,7 @@
             </div>
             
             <div class="text-center" style="margin-top: 3rem;">
-                <a href="#" class="download-btn">
+                <a href="CV.pdf" class="download-btn">
                     <i class="fas fa-download"></i>
                     Download Full Resume
                 </a>
@@ -1690,7 +1702,7 @@
                     <h3>Email</h3>
                     <p>For professional inquiries and collaborations</p>
                     <div class="contact-actions">
-                        <a href="mailto:hello@alfredmaweu.com" class="btn btn-outline">Send Email</a>
+                        <a href="mailto:binfred.ke@gmail.com" class="btn btn-outline">Send Email</a>
                     </div>
                 </div>
                 
@@ -1701,7 +1713,7 @@
                     <h3>WhatsApp</h3>
                     <p>For quick messages and informal communication</p>
                     <div class="contact-actions">
-                        <a href="https://wa.me/254712345678" class="btn btn-outline">
+                        <a href="https://wa.me/254700861129" class="btn btn-outline">
                             <i class="fab fa-whatsapp"></i> Message
                         </a>
                     </div>
@@ -1712,9 +1724,9 @@
                         <i class="fas fa-phone"></i>
                     </div>
                     <h3>Phone</h3>
-                    <p>For direct calls and urgent matters</p>
+                    <p>For direct calls and urgent matters reach out via call.</p>
                     <div class="contact-actions">
-                        <a href="tel:+254712345678" class="btn btn-outline">
+                        <a href="tel:+254700861129" class="btn btn-outline">
                             <i class="fas fa-phone"></i> Call Now
                         </a>
                     </div>
@@ -1727,7 +1739,7 @@
                     <h3>LinkedIn</h3>
                     <p>For professional networking and career opportunities</p>
                     <div class="contact-actions">
-                        <a href="https://linkedin.com/in/alfredmaweu" class="btn btn-outline">View Profile</a>
+                        <a href="https://www.linkedin.com/in/alfred-mulinge-7586582a9" class="btn btn-outline">View Profile</a>
                     </div>
                 </div>
             </div>
@@ -1739,37 +1751,37 @@
             <div class="footer-content">
                 <div class="social-links">
                     <!-- Professional Networks -->
-                    <a href="https://linkedin.com/in/alfredmaweu" class="social-link linkedin" title="LinkedIn">
+                    <a href="https://www.linkedin.com/in/alfred-mulinge-7586582a9" class="social-link linkedin" title="LinkedIn">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <a href="https://github.com/alfredmaweu" class="social-link github" title="GitHub">
+                    <a href="https://github.com/Einzelgaanger" class="social-link github" title="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://stackoverflow.com/users/alfredmaweu" class="social-link stack-overflow" title="Stack Overflow">
+                    <a href="https://stackoverflow.com/users/30068579/alfred-mulinge?tab=profile" class="social-link stack-overflow" title="Stack Overflow">
                         <i class="fab fa-stack-overflow"></i>
                     </a>
                     
                     <!-- Communication -->
-                    <a href="mailto:hello@alfredmaweu.com" class="social-link email" title="Email">
+                    <a href="mailto:binfred.ke@gmail.com" class="social-link email" title="Email">
                         <i class="fas fa-envelope"></i>
                     </a>
-                    <a href="https://wa.me/254712345678" class="social-link whatsapp" title="WhatsApp">
+                    <a href="https://wa.me/254700861129" class="social-link whatsapp" title="WhatsApp">
                         <i class="fab fa-whatsapp"></i>
                     </a>
-                    <a href="tel:+254712345678" class="social-link phone" title="Phone">
+                    <a href="tel:+254700861129" class="social-link phone" title="Phone">
                         <i class="fas fa-phone"></i>
                     </a>
                     
                     <!-- Social Media -->
-                    <a href="https://twitter.com/alfredmaweu" class="social-link twitter" title="Twitter">
+                    <a href="https://x.com/MulingeAl" class="social-link twitter" title="Twitter">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="https://instagram.com/alfredmaweu" class="social-link instagram" title="Instagram">
+                    <a href="https://www.instagram.com/mfalmefred/profilecard/?igsh=MXdlcmxhMWM1d3ZvYQ==" class="social-link instagram" title="Instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
                     
                     <!-- Developer Profiles -->
-                    <a href="https://codepen.io/alfredmaweu" class="social-link codepen" title="CodePen">
+                    <a href="https://codepen.io/Alfred-Mulinge" class="social-link codepen" title="CodePen">
                         <i class="fab fa-codepen"></i>
                     </a>
                 </div>
@@ -1899,36 +1911,36 @@
                         title: 'Kenyan Food Price Analysis',
                         description: 'Comprehensive longitudinal study analyzing the impact of food price fluctuations on the Kenyan economy from June 2006 to June 2024. Developed econometric models to identify key drivers of price volatility and created policy recommendations for market stabilization. The project involved time series analysis, causal inference modeling, and scenario forecasting using ARIMA and VAR methodologies.',
                         technologies: ['Python', 'Pandas', 'Statsmodels', 'ARIMA', 'Data Visualization'],
-                        downloadLink: '#',
+                        downloadLink: 'iLab.pdf',
                         imageUrl: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
                     },
                     {
                         title: 'TransparentTrack NGO System',
                         description: 'End-to-end solution for transparent and accountable NGO fund disbursement. The system includes beneficiary registration, needs assessment algorithms, fund allocation optimization, and blockchain-based transaction tracking to prevent fraud. Implemented with Django backend, React frontend, and Hyperledger Fabric for distributed ledger functionality.',
                         technologies: ['Django', 'React', 'Hyperledger', 'Blockchain', 'PostgreSQL'],
-                        githubLink: 'https://github.com/alfredmaweu/transparent-track',
-                        liveLink: 'https://transparenttrack.org',
+                        githubLink: 'https://github.com/Einzelgaanger/TransparentTrack.git',
+                        liveLink: 'https://einzelgaanger.github.io/TransparentTrack/',
                         imageUrl: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
                     },
                     {
                         title: 'BizLens SME Management Platform',
                         description: 'Comprehensive business management solution for small and medium enterprises featuring inventory management, sales tracking, financial reporting, and predictive analytics. The mobile-first design includes computer vision capabilities for product recognition and barcode scanning. Built with React Native for cross-platform compatibility and Firebase for real-time data synchronization.',
                         technologies: ['React Native', 'Firebase', 'Computer Vision', 'Python', 'Machine Learning'],
-                        githubLink: 'https://github.com/alfredmaweu/bizlens',
+                        githubLink: 'https://github.com/Pluto-BizLens/bizlens.git',
                         imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
                     },
                     {
                         title: 'Matungulu Bursary System',
                         description: 'Digital platform for transparent bursary allocation and distribution in Matungulu constituency. The system incorporates need-based algorithms, document verification, and mobile payment integration. Reduced processing time by 70% while increasing accountability through real-time tracking and automated reporting features.',
                         technologies: ['Django', 'M-Pesa API', 'React', 'PostgreSQL', 'Docker'],
-                        githubLink: 'https://github.com/alfredmaweu/matungulu-bursary',
+                        githubLink: 'https://github.com/Einzelgaanger/Matungulu.git',
                         imageUrl: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
                     },
                     {
                         title: 'Orthopedic Practice Website',
                         description: 'Professional website for an orthopedic surgery practice featuring appointment scheduling, telemedicine integration, and patient education resources. Implemented HIPAA-compliant forms and secure messaging with end-to-end encryption. The responsive design includes 3D anatomical visualizations and interactive treatment planners.',
                         technologies: ['React', 'Three.js', 'Node.js', 'MongoDB', 'WebRTC'],
-                        liveLink: 'https://orthocareclinic.com',
+                        githubLink: 'https://github.com/Einzelgaanger/Dr-Kartikeya.git',
                         imageUrl: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
                     }
                 ];
@@ -1949,6 +1961,18 @@
                         ? `<img src="${project.imageUrl}" alt="${project.title}">`
                         : `<div class="project-image-placeholder">${project.title}</div>`;
                     
+                    // Build buttons based on available links
+                    let buttons = '';
+                    if (project.githubLink) {
+                        buttons += `<a href="${project.githubLink}" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>`;
+                    }
+                    if (project.liveLink) {
+                        buttons += `<a href="${project.liveLink}" target="_blank" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>`;
+                    }
+                    if (project.downloadLink) {
+                        buttons += `<a href="${project.downloadLink}" class="btn btn-accent"><i class="fas fa-download"></i> Download</a>`;
+                    }
+                    
                     projectEl.innerHTML = `
                         ${imageContent}
                         <div class="project-content">
@@ -1956,18 +1980,13 @@
                             <div class="project-tags">
                                 ${project.technologies.map(tech => `<span class="project-tag">${tech}</span>`).join('')}
                             </div>
-                            <p>${project.description.substring(0, 120)}...</p>
+                            <p>${project.description}</p>
                             <div class="project-actions">
-                                <button class="btn view-project">View Details</button>
+                                ${buttons}
                             </div>
                         </div>
                     `;
                     
-                    projectEl.querySelector('.view-project').addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        openProjectModal(project);
-                    });
-
                     projectContainer.appendChild(projectEl);
                 });
             }
