@@ -1641,10 +1641,30 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
+                        <span class="timeline-date">2025</span>
+                        <h3>Web Platform Developer</h3>
+                        <h4>SecureAid</h4>
+                        <p>Prototyped a digital solution to mitigate corruption in fund disbursements for aid programs. The live prototype is accessible at <a href="https://secureaid.online" target="_blank">secureaid.online</a>.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2025</span>
+                        <h3>Algorithm Developer</h3>
+                        <h4>DealFuze (UK VC)</h4>
+                        <p>Developed a matching algorithm to connect investors with founders based on aligned goals and investment readiness. Worked under the mentorship of Noella Spitz, Senior Developer.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
                         <span class="timeline-date">Feb - Mar 2025</span>
-                        <h3>Data Analysis Intern</h3>
+                        <h3>Data Analyst</h3>
                         <h4>Enkaare</h4>
-                        <p>Developed talent matching algorithms and implemented data-driven recruitment strategies. Created a comprehensive marketing strategy through market research and competitive analysis, resulting in improved candidate placement rates.</p>
+                        <p>Developed talent matching algorithms and data-driven recruitment strategies. Created comprehensive marketing strategy through market research.</p>
                     </div>
                 </div>
                 
@@ -1654,7 +1674,7 @@
                         <span class="timeline-date">Jan - Mar 2025</span>
                         <h3>Crypto Economics Consultant</h3>
                         <h4>Black Panther TKN</h4>
-                        <p>Designed probabilistic models for tokenomics, including reward distribution algorithms and game theory applications. Developed mathematical frameworks to ensure sustainable token valuation and balanced incentive structures.</p>
+                        <p>Designed probabilistic models for tokenomics and reward distribution algorithms. Developed mathematical frameworks for sustainable token valuation.</p>
                     </div>
                 </div>
             </div>
@@ -1695,15 +1715,15 @@
                         <i class="fas fa-code"></i>
                     </div>
                     <h3>Web Development</h3>
-                    <p>Full-stack development with Django, React, Node.js, and modern JavaScript frameworks</p>
+                    <p>Frontend development with React, responsive design, and modern JavaScript frameworks</p>
                 </div>
                 
                 <div class="skill-item animate-fade delay-3">
                     <div class="skill-icon">
-                        <i class="fas fa-coins"></i>
+                        <i class="fas fa-database"></i>
                     </div>
-                    <h3>Financial Modeling</h3>
-                    <p>Quantitative analysis, risk assessment, and algorithmic trading strategy development</p>
+                    <h3>Database Management</h3>
+                    <p>SQL with Supabase, PostgreSQL, MongoDB, and Firebase for scalable data solutions</p>
                 </div>
             </div>
         </div>
@@ -1928,8 +1948,29 @@
             function initProjectInteractivity() {
                 const projects = [
                     {
+                        title: 'TengaPesa Platform',
+                        description: 'A proposed enhancement to M-PESA enabling users to create purpose-specific mini-wallets with configurable lock mechanisms and withdrawal conditions for disciplined financial planning. Features include goal-based savings, automated budgeting, and financial insights. The platform is designed to help users better manage their finances through compartmentalization of funds.',
+                        technologies: ['React', 'Node.js', 'M-Pesa API', 'Firebase', 'Supabase'],
+                        liveLink: 'https://tengapesa.onrender.com',
+                        imageUrl: 'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
+                        title: 'MemVault Platform',
+                        description: 'A comprehensive digital journaling and planning platform that combines journaling, event scheduling, and photo storage. This fusion of journal, Google Calendar, and Google Photos focuses on privacy and usability, featuring rich text editing, media attachments, and intelligent search capabilities. Built with a responsive design for seamless cross-device access.',
+                        technologies: ['React', 'Node.js', 'MongoDB', 'Firebase', 'Material-UI'],
+                        liveLink: 'https://memvault.onrender.com',
+                        imageUrl: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
+                        title: 'SecureAid Platform',
+                        description: 'A digital solution designed to mitigate corruption in fund disbursements for aid programs. The platform ensures transparency and accountability in humanitarian aid distribution through blockchain technology and smart contracts. Features include beneficiary verification, fund tracking, and automated reporting.',
+                        technologies: ['React', 'Node.js', 'Blockchain', 'Solidity', 'Web3.js'],
+                        liveLink: 'https://secureaid.online',
+                        imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
+                    },
+                    {
                         title: 'Kenyan Food Price Analysis',
-                        description: 'Comprehensive longitudinal study analyzing the impact of food price fluctuations on the Kenyan economy from June 2006 to June 2024. Developed econometric models to identify key drivers of price volatility and created policy recommendations for market stabilization. The project involved time series analysis, causal inference modeling, and scenario forecasting using ARIMA and VAR methodologies.',
+                        description: 'Longitudinal study (2006-2024) analyzing the impact of food price fluctuations on the Kenyan economy. Developed econometric models to identify key drivers of price volatility and created policy recommendations using ARIMA and VAR methodologies. The project provided actionable insights for market stabilization and economic planning.',
                         technologies: ['Python', 'Pandas', 'Statsmodels', 'ARIMA', 'Data Visualization'],
                         downloadLink: 'iLab.pdf',
                         imageUrl: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
